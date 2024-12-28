@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\LatestWork;
-use App\Models\Category;
 
 class LatestWorkController extends Controller
 {
@@ -13,10 +12,10 @@ class LatestWorkController extends Controller
      */
     public function index()
     {
-        // Retrieve all latest works with their categories
-        $latestWorks = LatestWork::with('category')->get();
+        // Fetch latest works ordered by the newest first
+        $latestWorks = LatestWork::orderBy('created_at', 'desc')->paginate(10);
 
-        return view('latest-works.index', compact('latestWorks'));
+        return view('admin.latestWork.index', compact('latestWorks'));
     }
 
     /**
@@ -24,8 +23,7 @@ class LatestWorkController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('latest-works.create', compact('categories'));
+        return view('admin.latest-works.create');
     }
 
     /**
@@ -35,10 +33,10 @@ class LatestWorkController extends Controller
     {
         // Validate incoming data
         $validated = $request->validate([
-            'category_id' => 'required|exists:categories,id',
-            'title' => 'required|string|max:255',
+            'category'    => 'required|in:interior,exterior',
+            'title'       => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'required|image|max:2048', // Max 2MB
+            'image'       => 'required|image|max:2048', // Max 2MB
         ]);
 
         // Handle image upload
@@ -50,8 +48,66 @@ class LatestWorkController extends Controller
         // Create latest work
         LatestWork::create($validated);
 
-        return redirect()->route('latest-works.index')->with('success', 'Latest work created successfully.');
+        return redirect()->route('admin.latest-works.index')->with('success', 'Latest work created successfully.');
     }
 
-    // Add other necessary methods (edit, update, destroy) as needed
+    /**
+     * Show the form for editing the specified latest work.
+     */
+    public function edit(LatestWork $latestWork)
+    {
+        return view('admin.latest-works.edit', compact('latestWork'));
+    }
+
+    /**
+     * Update the specified latest work in storage.
+     */
+
+     public function update(Request $request, $id)
+     {
+         // Find the latest work by ID or fail
+         $latestWork = LatestWork::findOrFail($id);
+     
+         // Validate incoming data
+         $data = $request->validate([
+             'category'    => 'required|in:interior,exterior',
+             'title'       => 'required|string|max:255',
+             'description' => 'required|string',
+             'image'       => 'nullable|image|max:2048', // Max 2MB
+         ]);
+     
+         // Handle image upload
+         if ($request->hasFile('image')) {
+             // Delete the old image if it exists in storage
+             if ($latestWork->image_path && \Storage::disk('public')->exists($latestWork->image_path)) {
+                 \Storage::disk('public')->delete($latestWork->image_path);
+             }
+     
+             // Store the new image and update the path
+             $imagePath = $request->file('image')->store('latest_works', 'public');
+             $data['image_path'] = $imagePath;
+         }
+     
+         // Update the latest work with validated data
+         $latestWork->update($data);
+     
+         // Redirect back with a success message
+         return redirect()->route('admin.latest-works.index')->with('success', 'Latest work updated successfully.');
+     }
+
+    /**
+     * Remove the specified latest work from storage.
+     */
+    public function destroy(LatestWork $latestWork)
+    {
+        // Delete the image if it exists
+        if ($latestWork->image_path) {
+            \Storage::disk('public')->delete($latestWork->image_path);
+        }
+
+        // Delete the latest work
+        $latestWork->delete();
+
+        return redirect()->route('admin.latest-works.index')->with('success', 'Latest work deleted successfully.');
+    }
 }

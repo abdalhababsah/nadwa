@@ -253,11 +253,9 @@
                 <div class="col-lg-6">
                     <div class="single-about-left wow fadeInLeft">
                         <div class="about-thumb">
-                            <img src="assets/images/about/about-one.png" alt="">
+                            <img src="{{asset('assets/images/1.png')}}" style="object-fit:contain; " alt="">
                         </div>
-                        <div class="about-button">
-                            <a href="service-details.html">About Us</a>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -268,8 +266,6 @@
                                 <!-- / tabs -->
                                 <ul class="tabs">
                                     <li class="boder"><a href="#">HISTORY</a></li>
-                                    <li><a href="#">MISSION </a></li>
-                                    <li><a href="#">VISSION</a></li>
                                 </ul>
                                 <div class="tab_content">
                                     <!-- / tabs_item -->
@@ -282,77 +278,15 @@
                                                 convergence energistically simplify discover.</p>
                                         </div>
                                         <div class="tab-thumb">
-                                            <img src="assets/images/about/about-1.jpg" alt="">
+                                            <img src="{{asset('')}}" alt="">
                                         </div>
                                         <div class="tab-title">
                                             <h3>Design Make Dream</h3>
                                             <p>Rapidiously evolve pandemic experiences and Dramatically administrate</p>
                                         </div>
-                                        <div class="prossess-ber-plugin pt-20">
-                                            <span class="prosses-bar">Architecture</span>
-                                            <div id="bar1" class="barfiller">
-                                                <div class="tipWrap">
-                                                    <span class="tip"></span>
-                                                </div>
-                                                <span class="fill" data-percentage="80"></span>
-                                            </div>
-                                            <span class="prosses-bar">Interior Design</span>
-                                            <div id="bar2" class="barfiller">
-                                                <div class="tipWrap">
-                                                    <span class="tip"></span>
-                                                </div>
-                                                <span class="fill my-class" data-percentage="70"></span>
-                                            </div>
-                                        </div>
+
                                     </div>
-                                    <!-- / tabs_item -->
-                                    <div class="tabs_item">
-                                        <!-- post comment -->
-                                        <div class="post-comment-description">
-                                            <p>Rapidiously evolve pandemic experiences and end-to-end platforms. don
-                                                Dramatically administrate inexpensive users with integrated experiences
-                                                Collaboratively redefine cutting-edge infrastructures whereas open main
-                                                convergence energistically simplify discover.</p>
-                                        </div>
-                                        <div class="tab-thumb">
-                                            <img src="assets/images/about/about-1.jpg" alt="">
-                                        </div>
-                                        <div class="tab-title">
-                                            <h3>Design Make Dream</h3>
-                                            <p>Rapidiously evolve pandemic experiences and Dramatically administrate</p>
-                                        </div>
-                                        <div class="post-comment-description pt-3">
-                                            <p>Mission evolve pandemic experiences and end-to-end platforms. don
-                                                Dramatically administrate inexpensive users with integrated experiences
-                                                Collaboratively redefine cutting-edge infrastructures whereas open main
-                                                convergence energistically the best design of dreamit simplify discover.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- / tabs_item -->
-                                    <div class="tabs_item">
-                                        <!-- post comment -->
-                                        <div class="post-comment-description">
-                                            <p>Rapidiously evolve pandemic experiences and end-to-end platforms. don
-                                                Dramatically administrate inexpensive users with integrated experiences
-                                                Collaboratively redefine cutting-edge infrastructures whereas open main
-                                                convergence energistically simplify discover.</p>
-                                        </div>
-                                        <div class="tab-thumb">
-                                            <img src="assets/images/about/about-1.jpg" alt="">
-                                        </div>
-                                        <div class="tab-title">
-                                            <h3>Design Make Dream</h3>
-                                            <p>Rapidiously evolve pandemic experiences and Dramatically administrate</p>
-                                        </div>
-                                        <div class="post-comment-description pt-3">
-                                            <p>Vision evolve pandemic experiences and end-to-end platforms. don
-                                                Dramatically administrate inexpensive users with integrated experiences
-                                                Collaboratively redefine cutting-edge infrastructures whereas open main
-                                                convergence energistically the best design of dreamit simplify discover.
-                                            </p>
-                                        </div>
-                                    </div>
+
                                 </div> <!-- / tab_content -->
                             </div>
                         </div>
@@ -445,7 +379,6 @@
     <!--==================================================-->
     <!-- Start service-area -->
     <!--==================================================-->
-
     <div class="service-area one upper">
         <div class="container">
             <div class="row align-items-center">
@@ -461,179 +394,49 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="single-service-box wow fadeInLeft">
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <div class="service-inner-box upper">
-                                    <div class="service-content">
-                                        <div class="service-title">
-                                            <h3><span>01.</span> Architecture Design</h3>
+                @foreach ($services as $index => $service)
+                    <div class="col-lg-12">
+                        <div class="single-service-box wow fadeInLeft">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <div class="service-inner-box upper">
+                                        <div class="service-content">
+                                            <div class="service-title">
+                                                <h3><span>{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}.</span>
+                                                    {{ $service->title }}</h3>
+                                            </div>
+                                        </div>
+                                        <div class="service-thumb">
+                                            <img src="{{ asset('storage/' . $service->image_path) }}"
+                                                alt="{{ $service->title }}">
                                         </div>
                                     </div>
-                                    <div class="service-thumb">
-                                        <img src="assets/images/service/service-1.jpg" alt="">
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-5">
-                                <div class="service-inner-box">
-                                    <div class="service-content">
-                                        <div class="service-description">
-                                            <p>Rapidiously evolve pandemic experiences and end-to-end Dramatically
-                                                administrate inexpensive</p>
-                                            <div class="icon-list">
-                                                <ul>
-                                                    <li><i class="bi bi-check-lg"></i> Building Plans Design</li>
-                                                    <li><i class="bi bi-check-lg"></i> Soil Testing and Solderings</li>
-                                                </ul>
+                                <div class="col-lg-5">
+                                    <div class="service-inner-box">
+                                        <div class="service-content">
+                                            <div class="service-description">
+                                                <p>{{ $service->description }}</p>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="service-inner-box">
-                                    <div class="service-content">
-
+                                <div class="col-lg-2">
+                                    <div class="service-inner-box">
+                                        <div class="service-content"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="single-service-box wow fadeInRight">
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <div class="service-inner-box upper">
-                                    <div class="service-content">
-                                        <div class="service-title">
-                                            <h3><span>02.</span> Interior Designing</h3>
-                                        </div>
-                                    </div>
-                                    <div class="service-thumb">
-                                        <img src="assets/images/service/service-2.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-5">
-                                <div class="service-inner-box">
-                                    <div class="service-content">
-                                        <div class="service-description">
-                                            <p>Rapidiously evolve pandemic experiences and end-to-end Dramatically
-                                                administrate inexpensive</p>
-                                            <div class="icon-list">
-                                                <ul>
-                                                    <li><i class="bi bi-check-lg"></i> Building Plans Design</li>
-                                                    <li><i class="bi bi-check-lg"></i> Soil Testing and Solderings</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="service-inner-box">
-                                    <div class="service-content">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="single-service-box wow fadeInLeft">
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <div class="service-inner-box upper">
-                                    <div class="service-content">
-                                        <div class="service-title">
-                                            <h3><span>03.</span> Urban Design</h3>
-                                        </div>
-                                    </div>
-                                    <div class="service-thumb">
-                                        <img src="assets/images/service/service-3.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-5">
-                                <div class="service-inner-box">
-                                    <div class="service-content">
-                                        <div class="service-description">
-                                            <p>Rapidiously evolve pandemic experiences and end-to-end Dramatically
-                                                administrate inexpensive</p>
-                                            <div class="icon-list">
-                                                <ul>
-                                                    <li><i class="bi bi-check-lg"></i> Building Plans Design</li>
-                                                    <li><i class="bi bi-check-lg"></i> Soil Testing and Solderings</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="service-inner-box">
-                                    <div class="service-content">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="single-service-box wow fadeInLeft">
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <div class="service-inner-box upper">
-                                    <div class="service-content">
-                                        <div class="service-title">
-                                            <h3><span>04.</span> Exterior Design</h3>
-                                        </div>
-                                    </div>
-                                    <div class="service-thumb">
-                                        <img src="assets/images/service/service-3.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-5">
-                                <div class="service-inner-box">
-                                    <div class="service-content">
-                                        <div class="service-description">
-                                            <p>Rapidiously evolve pandemic experiences and end-to-end Dramatically
-                                                administrate inexpensive</p>
-                                            <div class="icon-list">
-                                                <ul>
-                                                    <li><i class="bi bi-check-lg"></i> Building Plans Design</li>
-                                                    <li><i class="bi bi-check-lg"></i> Soil Testing and Solderings</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="service-inner-box">
-                                    <div class="service-content">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
-
     <!--==================================================-->
     <!-- End service-area -->
     <!--==================================================-->
-
-
 
     <!--==================================================-->
     <!-- Start project-area -->
@@ -660,63 +463,19 @@
                 </div>
             </div>
             <div class="row">
-
-                <div class="col-lg-6">
-                    <div class="single-project-box">
-                        <div class="project-thumb">
-                            <img src="{{ 'assets/images/service/latest-work-2.jpg' }}" alt="">
-                        </div>
-                        <div class="project-content style-one">
-                            <h4>ARCHITECTURE</h4>
-                            <h3>Luxury Modern <br> Building Sandigo <br> USA</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="single-project-box">
-                        <div class="project-thumb">
-                            <img src="{{ asset('assets/images/slider/18.jpg') }}" alt="">
-                        </div>
-                        <div class="project-content">
-                            <h4>ARCHITECTURE</h4>
-                            <h3>Luxury Modern <br> Building Sandigo <br> USA</h3>
-
+                @foreach ($interiorWorks as $work)
+                    <div class="col-lg-4">
+                        <div class="single-project-box">
+                            <div class="project-thumb img-container">
+                                <img src="{{ asset('storage/' . $work->image_path) }}" alt="{{ $work->title }}">
+                            </div>
+                            <div class="project-content style-one">
+                                <h4>{{ strtoupper($work->title) }}</h4>
+                                <h3>{{ $work->description }}</h3>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="single-project-box">
-                        <div class="project-thumb">
-                            <img src="{{ 'assets/images/service/9.jpg' }}" alt="">
-                        </div>
-                        <div class="project-content style-one">
-                            <h4>ARCHITECTURE</h4>
-                            <h3>Luxury Modern <br> Building Sandigo <br> USA</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="single-project-box">
-                        <div class="project-thumb">
-                            <img src="{{ asset('assets/images/service/1.jpg') }}" alt="">
-                        </div>
-                        <div class="project-content style-one">
-                            <h4>ARCHITECTURE</h4>
-                            <h3>Luxury Modern <br> Building Sandigo <br> USA</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="single-project-box">
-                        <div class="project-thumb">
-                            <img src="{{ asset('assets/images/service/3-latest-work.jpg') }}" alt="">
-                        </div>
-                        <div class="project-content style-one">
-                            <h4>ARCHITECTURE</h4>
-                            <h3>Luxury Modern <br> Building Sandigo <br> USA</h3>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -751,7 +510,8 @@
             transform: scale(1.05);
         }
     </style>
-    <div class="portfolio-minimal-area seven">
+
+    <div class="project-area one upper">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12">
@@ -772,164 +532,22 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12">
-
-                </div>
-            </div>
-            <div class="row image_load">
-                <div class="col-lg-4 col-md-6 grid-item physics english">
-                    <div class="case-study-single-box wow fadeInUp">
-                        <div class="case-study-thumb2">
-                            <div class="img-container">
-                                <img src="{{ asset('assets/images/slider/Enscape_2023-07-18-08-58-17.jpg') }}"
-                                    alt="Enscape Image" class="img-fluid">
+                @foreach ($exteriorWorks as $work)
+                    <div class="col-lg-4">
+                        <div class="single-project-box">
+                            <div class="project-thumb img-container">
+                                <img src="{{ asset('storage/' . $work->image_path) }}" alt="{{ $work->title }}">
+                            </div>
+                            <div class="project-content style-one">
+                                <h4>{{ strtoupper($work->title) }}</h4>
+                                <h3>{{ $work->description }}</h3>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 grid-item physics chemistry math">
-                    <div class="case-study-single-box wow fadeInUp">
-                        <div class="case-study-thumb2">
-                            <div class="img-container">
-                                <img src="{{ asset('assets/images/slider/A-latest.jpg') }}" alt="A Latest Image"
-                                    class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 grid-item chemistry english">
-                    <div class="case-study-single-box wow fadeInUp">
-                        <div class="case-study-thumb2">
-                            <div class="img-container">
-                                <img src="{{ asset('assets/images/slider/1-latest.jpg') }}" alt="1 Latest Image"
-                                    class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 grid-item math english">
-                    <div class="case-study-single-box wow fadeInUp">
-                        <div class="case-study-thumb2">
-                            <div class="img-container">
-                                <img src="{{ asset('assets/images/slider/latest-exterior.jpg') }}" alt="Latest Exterior"
-                                    class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 grid-item math physics">
-                    <div class="case-study-single-box wow fadeInUp">
-                        <div class="case-study-thumb2">
-                            <div class="img-container">
-                                <img src="{{ asset('assets/images/slider/1-exterior.jpg') }}" alt="1 Exterior"
-                                    class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 grid-item chemistry physics">
-                    <div class="case-study-single-box wow fadeInUp">
-                        <div class="case-study-thumb2">
-                            <div class="img-container">
-                                <img src="{{ asset('assets/images/slider/6.png') }}" alt="6 Image" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
-
-    <!--==================================================-->
-    <!-- Start team-area -->
-    <!--==================================================-->
-
-    <div class="team-area one upper">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <div class="section-title upper">
-                        <div class="main-title">
-                            <h1>ENGINEERS</h1>
-                        </div>
-                        <div class="sub-title">
-                            <h2>Al Nadwa’s Expert <span>Engineers</span></h2>
-                        </div>
-                    </div>
-                    <div class="team-shap bounce-animate3">
-                        <img src="assets/images/resource/counter-shape.png" alt="">
-                    </div>
-                    <div class="team-shape bounce-animate2">
-                        <img src="assets/images/resource/counter-shap.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-team-box wow fadeInLeft">
-                        <div class="team-thumb">
-                            <img src="assets/images/team/team-1.jpg" alt="">
-                        </div>
-                        <div class="team-content">
-                            <h3>Moris Barbar</h3>
-                            <span>engineer</span>
-                            <div class="team-icon-list">
-                                <ul>
-                                    <li><a href="#"> <i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"> <i class="fab fa-twitter"> </i> </a></li>
-                                    <li><a href="#"> <i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"> <i class="fab fa-pinterest-p"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-team-box wow fadeInUp">
-                        <div class="team-thumb">
-                            <img src="assets/images/team/team-2.jpg" alt="">
-                        </div>
-                        <div class="team-content">
-                            <h3>Moris Barbar</h3>
-                            <span>engineer</span>
-                            <div class="team-icon-list">
-                                <ul>
-                                    <li><a href="#"> <i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"> <i class="fab fa-twitter"> </i> </a></li>
-                                    <li><a href="#"> <i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"> <i class="fab fa-pinterest-p"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-team-box wow fadeInRight">
-                        <div class="team-thumb">
-                            <img src="assets/images/team/team-3.jpg" alt="">
-                        </div>
-                        <div class="team-content">
-                            <h3>Moris Barbar</h3>
-                            <span>engineer</span>
-                            <div class="team-icon-list">
-                                <ul>
-                                    <li><a href="#"> <i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"> <i class="fab fa-twitter"> </i> </a></li>
-                                    <li><a href="#"> <i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"> <i class="fab fa-pinterest-p"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--==================================================-->
-    <!-- End team-area -->
-    <!--==================================================-->
-
 
 
     <!--==================================================-->

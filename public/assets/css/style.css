@@ -3967,7 +3967,6 @@ span.fill {
     background: #fff;
 }
 .service-area.one.upper::before {
-    background: url(../images/service/server-bg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -5676,7 +5675,8 @@ span.fill {
 .contact-area-inner {
     background: #161616;
     padding: 0 0 120px;
-    background: url(../images/resource/world.jpg);
+    background: url(../images/OIU9KI0.jpeg) no-repeat center center;
+
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -5697,7 +5697,7 @@ span.fill {
 }
 
 .contact-area-inner .section-title.upper .sub-title h2 {
-    color: #fff;
+    color: black;
 }
 
 .contact-area-inner .form_box input {
@@ -5708,19 +5708,23 @@ span.fill {
     transition: .5s;
     border: inherit;
     color: #fff;
-    background: #101010;
+    background: white;
     margin: 0 0 20px;
     outline: inherit;
+    box-shadow: 7px 6px 43px rgba(0, 0, 0, 0.1);
+
 }
 
 .contact-area-inner .form_box textarea#message {
     width: 100%;
-    background: #101010;
+    background: white;
     outline: inherit;
     border: inherit;
     height: 150px;
     color: #fff;
     padding: 20px 20px 0;
+    box-shadow: 7px 6px 43px rgba(0, 0, 0, 0.1);
+
 }
 
 .contact-area-inner .sub-title h2::before {
@@ -5781,7 +5785,7 @@ span.fill {
 
 .map-section {
     padding: 120px 0 110px;
-    background: #161616;
+    background: #fff;
 }
 
 .map-section .row.mg-pt {
@@ -6474,7 +6478,7 @@ span.fill {
 }
 
 .testimonial-area.one.upper {
-    background: url(../images/testimonial/testi-bg.jpg);
+    background: url(../images/testemonial.jpg);
 }
 .testimonial-area.one.upper .testimonial-thumb img {
     width: 100%;

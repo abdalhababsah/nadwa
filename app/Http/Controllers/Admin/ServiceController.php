@@ -10,7 +10,7 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $services = Service::all();
+        $services = Service::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.services.index', compact('services'));
     }
 
@@ -21,8 +21,6 @@ class ServiceController extends Controller
             'description' => 'required|string',
             'image' => 'required|image|max:2048', // Max 2MB
         ]);
-    
-        // Handle image upload
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('services', 'public'); // Save in `storage/app/public/services`
             $data['image_path'] = $imagePath;
